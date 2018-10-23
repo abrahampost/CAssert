@@ -58,8 +58,8 @@ int assert_str_ineq(char* one, char* two, char* test_name) {
 int run_tests(int(*func)(), char* test_name) {
 	int pid = fork();
 	if (pid == 0) {
-		(*func)();
-		exit(0);
+		int result = (*func)();
+		exit(result);
 	} else if (pid < 0) {
 		fprintf(stderr, "\nError: unable to create testing process\n\n\n");
 		return 1;
